@@ -1,0 +1,11 @@
+
+#loader
+{
+		background: url('../images/open.svg') center center no-repeat #ccc;
+		background-size: 15% auto;
+		position: fixed;
+		left:0;
+		right:0;
+		top: 0;
+		bottom:0;
+}

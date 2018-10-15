@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- CSS -->
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/lib/fuelux/css/fuelux.min.css" rel="stylesheet">
+    <link href="assets/lib/fontawesome/css/all.css" rel="stylesheet">
+    <link href="assets/lib/gritter/css/jquery.gritter.css" rel="stylesheet">
+    <link href="assets/lib/sweetalert/sweetalert2.css" rel="stylesheet">
+    <link href="assets/lib/animate.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+	
+  </head>
+  <body class="fuelux">
+   
+   <video id="preview" style="width:100%; height:500px;"></video>
+   
+    <script src="assets/lib/jquery-3.3.1.min.js"></script>
+    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/lib/fuelux/js/fuelux.min.js"></script>
+	<script type="text/javascript" src="assets/lib/adapter.min.js"></script>
+    <script src="assets/lib/instascan.min.js"></script>
+    <script src="assets/lib/jquery.mask.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/ajax.js"></script>
+	<script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        alert(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>
+  </body>
+</html>
