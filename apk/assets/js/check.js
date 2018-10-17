@@ -16,7 +16,7 @@ $(function () {
 
 
             $.ajax({
-                url: 'http://192.168.15.8/projetos/voucher/server/remember.php',
+                url: serverurl+'/remember.php',
                 type: 'POST',
                 data: formData,
                 async: true,

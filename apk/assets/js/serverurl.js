@@ -1,1 +1,1 @@
-var serverurl = 'http://192.168.25.61';
+var serverurl = 'http://192.168.25.61/projetos/voucher';

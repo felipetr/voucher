@@ -8,7 +8,7 @@ $(function () {
 
 
         $.ajax({
-            url: 'http://192.168.15.8/projetos/voucher/server/logarse.php',
+            url: serverurl+'/logarse.php',
             type: 'POST',
             data: formData,
             async: true,
