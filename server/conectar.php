@@ -1,0 +1,1 @@
+<?php@header('Access-Control-Allow-Origin: *');$link_db = mysqli_connect('localhost',$logindb,$senhadb,$bancodb) or die("Erro " . mysqli_error($link_db));mysqli_set_charset($link_db, "utf8");

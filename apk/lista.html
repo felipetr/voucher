@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- CSS -->
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/lib/fuelux/css/fuelux.min.css" rel="stylesheet">
+    <link href="assets/lib/fontawesome/css/all.css" rel="stylesheet">
+    <link href="assets/lib/gritter/css/jquery.gritter.css" rel="stylesheet">
+    <link href="assets/lib/sweetalert/sweetalert2.css" rel="stylesheet">
+    <link href="assets/lib/animate.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body class="loginbody">
+<div class="headercontent">
+    <div style="min-height: calc(100% - 42px);">
+    <div class="p-3">
+        <div class="mostralista">
+        <div class="text-center">
+            <svg width="86px"  height="86px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;"><path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#ffffff"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></svg>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="p-3">
+       <a class="btn btn-primary btn-block border-radius-50" href="home.html">Voltar</a>
+    </div>
+</div>
+
+
+<script src="assets/lib/jquery-3.3.1.min.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/lib/fuelux/js/fuelux.min.js"></script>
+<script src="assets/lib/jquery.mask.js"></script>
+<script src="assets/js/scripts.js"></script><script src="assets/js/serverurl.js"></script>
+<script src="assets/js/ajax.js"></script>
+<script>
+    $(function () {
+
+        var params = {};
+
+        if (location.search) {
+            var parts = location.search.substring(1).split('&');
+
+            for (var i = 0; i < parts.length; i++) {
+                var nv = parts[i].split('=');
+                if (!nv[0]) continue;
+                params[nv[0]] = nv[1] || true;
+            }
+        }
+
+// Now you can get the parameters you want like so:
+        var nome = params.nome;
+        var email = params.email;
+        var cpf = params.cpf;
+
+
+
+
+        var formData = new FormData();
+        formData.append('email', email);
+        formData.append('user', localStorage.getItem("qrvalida_id"));
+        formData.append('nome', nome);
+        formData.append('cpf', cpf);
+
+
+
+
+            $.ajax({
+                url: serverurl+'/projetos/voucher/server/listar.php',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+$('.mostralista').html(returndata);
+
+                },
+                error: function (result) {
+                    window.location = "noconnect.html";
+                }
+            });
+
+
+
+
+    });
+</script>
+</body>
+</html>
